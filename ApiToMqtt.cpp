@@ -169,8 +169,10 @@ int main(int argc, char* argv[])
 			std::cout << "\nDisconnecting..." << '\n';
 			client.disconnect()->wait();
 			std::cout << "  ...OK" << '\n';
+			delete readings;
 		}
 		catch (const mqtt::exception& exc) {
+			delete readings;
 			std::cerr << exc.what() << '\n';
 			return 1;
 		}
